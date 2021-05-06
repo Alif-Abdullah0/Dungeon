@@ -67,8 +67,8 @@ def tagger(html, tag, content):
     lonk = x.find(tag)
     ret = x[:lonk] + content + x[lonk:]
     return(ret)
-
-html = tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='reg.css'>")
+es = tagger(s,'body','<div class="bg"> </div>')
+html = tagger(es, 'head', "<style> body, html {  height: 100%;  margin: 0;}.bg {  background-image: url('fount_door.png');  height: 100%;  background-position: center;  background-repeat: no-repeat;  background-size: cover;} </style> <link rel='stylesheet' type='text/css' href='reg.css'>")
 
 key = data.getvalue('key')
 
@@ -102,14 +102,14 @@ if key == 'o1':
         if random.randrange(2) == 0:
             inventory_wipe()
             stat_reset()
-            fin = tagger(cort,'body','Poisonous! You drop dead in the fountain room. The door closes behind you. <a href="entry.p"> Try again </a>')
+            fin = tagger(cort,'body','Poisonous! You drop dead in the fountain room. The door closes behind you. <a href="entry.py"> Try again </a>')
             print(fin)
         else:
             stat_change('HP','30')
             fin = tagger(cort,'body','Refreshing! After drinking your fill of the water, you notice that the door behind you has closed. You attempt to open it, but find that neither brute strength or your key can allow you to open. However, a replica door has appeared on the other side of the fountain. Your only option is to try and open it, and to your surprise, the door does open. <br> <a href="shop.py?enter=fountain"> Walk through </a>')
         print(fin)
     else:
-        fin = tagger(html,'body','The door opens its eye. LIARS WILL BE TERMINATED. That is the last thing you here before you are vaporized. <br> <a href="entry.py>"> Getting vaporized sure does suck, huh? </a>')
+        fin = tagger(html,'body','The door opens its eye. LIARS WILL BE TERMINATED. That is the last thing you here before you are vaporized. <br> <a href="entry.py"> Getting vaporized sure does suck, huh? </a>')
         print(fin)
 else:
     if inventory_get('Key'):
@@ -118,8 +118,5 @@ else:
     else:
         inventory_wipe()
         stat_reset()
-        fin = tagger(html,'body','You decide to head back to the main room. As you start to leave, your vision gets kind of blurry. You soon pass out. Waking up, you find you are at the front door of the dungeon. Al<a href="entry.py"> ')
+        fin = tagger(html,'body','You decide to head back to the main room. As you start to leave, your vision gets kind of blurry. You soon pass out. Waking up, you find you are at the front door of the dungeon. All of your items are gone. <a href="entry.py"> Start Over </a> ')
         print(fin)
-        
-    
-    

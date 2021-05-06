@@ -94,13 +94,13 @@ buy = (formboi('shop.py', 'items', ['o1','o2','o3','o4','o5'],['Buy a Cookie','G
 goods = data.getvalue('items')
 
 
-
-html = tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='reg.css'>")
+es = tagger(s,'body','<div class="bg"> </div>')
+html = tagger(es, 'head', "<style> body, html {  height: 100%;  margin: 0;}.bg {  background-image: url('shop.png');  height: 100%;  background-position: center;  background-repeat: no-repeat;  background-size: cover;} </style> <link rel='stylesheet' type='text/css' href='reg.css'>")
 if (stat_get('GP') <= 0):
     if inventory_get('Cookie'):
         print(tagger(html,'body','"Sorry. Looks like you do not have enough money to buy anything else from me. You do not smell of gold any longer. Good day!" <br> <a href="gateway.py"> Time to go </a>'))
     else:
-        print(tagger(html,'body','"Looks like you do not have enough money to buy anything from me. Sucks to hear pal. Oh well." <a href="gateway.py"> Time to go </a>'))
+        print(tagger(html,'body','"Looks like you do not have enough money to buy anything from me. Sucks to hear pal. Oh well." <br> <a href="gateway.py"> Time to go </a>'))
 else:
     if goods == 'o1':
         if inventory_get('Cookie'):
@@ -132,3 +132,4 @@ else:
         intro = tagger(html,'body','<h1> You gaze upon a human merchant at a wooden stand, outside of a large hotel. </h1> "Items for sale!" he yells, over and over. His gaze stops on you. "Hello there! What would you like to buy?" ' )
         fin = tagger(intro,'body',buy)
         print(fin)
+

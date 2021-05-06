@@ -139,7 +139,8 @@ Goal = stat_get_s('king.txt','HP')
 Armor = stat_get('Armor')
 
 Atk = (random.randrange(5) + stat_get('Attack'))
-html = tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='reg.css'>")
+es = tagger(s,'body','<div class="bg"> </div>')
+html = tagger(es, 'head', "<style> body, html {  height: 100%;  margin: 0;}.bg {  background-image: url('throne.png');  height: 100%;  background-position: center;  background-repeat: no-repeat;  background-size: cover;} </style> <link rel='stylesheet' type='text/css' href='reg.css'>")
 
 Dmg = (random.randrange(4) * random.randrange(5))
 Health = stat_get('HP')
@@ -148,7 +149,7 @@ Battle = formboi(('bossfight.py?heart=' + str(Goal)),'fight',['o1','o2','o3'],['
 
 fight = data.getvalue('fight')
 if Goal <= 0:
-    print(tagger(html,'body','As you slash your blade into the king, you notice he begins to tremble. As blood splatters from his wound onto your blade, he looks into your eyes, and smiles. Then, he too falls. You gingerly walk over his body, and holding your side to stop the blood loss, ascend the throne. You are the king, now. <a href="final.py"> Sweet Victory </a>'))
+    print(tagger(html,'body','As you slash your blade into the king, you notice he begins to tremble. As blood splatters from his wound onto your blade, he looks into your eyes, and smiles. Then, he falls. You gingerly walk over his body, and holding your side to stop the blood loss, ascend the throne. You are the monarch, now. <a href="final.py"> Sweet Victory </a>'))
 elif Health <= 0:
     print(tagger(html,'body','You fall. "Just like everyone else has," the king adds with a smile. "It is over now. Rest up, and try again someday, kid." With that, he looks into your eyes as he plunges his sword into your body. <a href="entry.py"> The end of the beginning </a>'))
 else:

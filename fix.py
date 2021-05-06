@@ -9,6 +9,40 @@ cgitb.enable()
 import cgi
 data = cgi.FieldStorage()
 
+def stat_change(stat,value):
+    file = open('../www/stats.txt', 'r')
+    red = file.read()
+    red = red.split('\n')
+    red = ' '.join(red)
+    red = red.split(' ')
+    ind = red.index(stat)
+    red.remove(red[ind+1])
+    red.insert(ind+1,value)
+    coun = 0
+    ind = 1
+    for x in red:
+        if x == '':
+            red.remove('')
+    lonk = len(red)
+    spa = 0
+    newl = 0
+    spa_turn = 0
+    while ((spa + newl) < (lonk - 1)):
+        if spa_turn == 0:
+            red.insert(ind,' ')
+            spa += 1
+            spa_turn = 1
+        else:
+            red.insert(ind,'\n')
+            newl += 1
+            spa_turn = 0
+        ind += 2
+    red = ''.join(red)
+    file.close()
+    file = open('../www/stats.txt', 'w')
+    file.write(red)
+    file.close()
+
 f = open('html.txt')
 s = f.read()
 s = s.strip()
@@ -22,7 +56,6 @@ def formboi(file,select_name,option_value,option_name):
         html += '<option value="' + x + '">' + option_name[ind] + '</option> \n'
     html += '</select> \n <input type="submit"> \n </form>'
     return(html)
-print(formboi('foo.py', 'what', ['o1','o2'],['this', 'that']))
 
 def formtext(file,name,preface=''):
     html = '<form action="'+ file + '" method="GET"' + '>\n'

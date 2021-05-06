@@ -99,6 +99,6 @@ if 'equip' in data:
         file.close()
     elif e == "Firesword":
         stat_change('Attack','6')
-    print(tagger(html,'body','<a href="'+ w +'"> Turn around </a>'))
+    print(tagger(html,'body','<a href="'+ w +'"> Proceed </a>'))
 else:
     print(tagger(nor,'body','These are not the droids you are looking for.'))

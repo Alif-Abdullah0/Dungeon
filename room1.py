@@ -10,9 +10,6 @@ print('Content-type: text/html\n')
 import cgi
 data = cgi.FieldStorage()
 
-import cgitb
-cgitb.enable()
-
 def inventory_wipe():
     r = open('../www/inventory.txt','w')
     r.close()
@@ -74,21 +71,22 @@ def tagger(html, tag, content):
     lonk = x.find(tag)
     ret = x[:lonk] + content + x[lonk:]
     return(ret)
-hiya = tagger(s,'body','<div class="bg"> </div> <div class="invis"><a href="equip.py?equip=Firesword&web=room1.py"> I am invisible! </a> </div>')
+el = tagger(s,'head','<style>.invis a:link, .invis a:visited, .invis a {color:white;} body, html {  height: 100%;  margin: 0;}.bg {  background-image: url("firstroom.png");  height: 100%;  background-position: center;  background-repeat: no-repeat;  background-size: cover;} </style>')
+hiya = tagger(el,'body','<div class="bg"> </div> <div class="invis"><a href="equip.py?equip=Firesword&web=room1.py"> I am invisible! </a> </div>')
 new = tagger(hiya,'head','<link rel="stylesheet" type="text/css" href="reg.css">')
 if 'tri_fir' in data:
     if data.getvalue('tri_fir') == 'o1':
         inventory_wipe()
         stat_reset()
         nor = (tagger(new,'body',"The fireplace lights up again. Unfortunately, you were standing too close too it. You're journey has come to an end."))
-        held = (tagger(nor,'body',"<a href='entry.py'> Return </a>"))
+        held = (tagger(nor,'body',"<br> <a href='entry.py'> Return </a>"))
         print(held)
     elif data.getvalue('tri_fir') == 'o2':
         nor = (tagger(new,'body',"As you investigate the table, you notice there is a large crack in the middle of it. You barely touch it, and it breaks, revealing a trap door underneath."))
-        print(tagger(nor,'body',"<a href='base.py'>Proceed Below</a>"))
+        print(tagger(nor,'body',"<br> <a href='base.py'>Proceed Below</a>"))
     else:
-        nor = (tagger(new,'body',"As you approach the right side of the roomm your mind starts to drift off, until you realize you are back where you started, in the back of the room."))
-        print(tagger(nor,'body',"<a href='room1.py'> Time to not waste anymore time. </a>"))
+        nor = (tagger(new,'body',"As you approach the right side of the room your mind starts to drift off, until you realize you are back where you started, in the back of the room."))
+        print(tagger(nor,'body',"<br> <a href='room1.py'> Time to not waste anymore time. </a>"))
 else:
     nor = (tagger(new, 'body', "You are in the first room of the dungeon. In the middle of the room lies a table with a bunch of cards on it. To the left is a fireplace that has been recently extinguished. To the right appears to an open doorway leading to a final boss room... What was to the right again? You're memory clouds over as you ignore the totally unimportant right side of the room."))
     py = (tagger(nor,'body',held))

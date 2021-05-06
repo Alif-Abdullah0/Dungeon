@@ -32,7 +32,8 @@ spooder = data.getvalue('dec')
 
 form = formboi('cathedral.py','choi',['01','02'],['Check out the cobweb','Leave through the doorway on the opposite side of the room.'])
 spider_choice = formboi('cathedral.py','dec',['o1','o2'],['Fight the spider!','Can we not fight?'])
-html = tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='reg.css'>")
+es = tagger(s,'body','<div class="bg"> </div>')
+html = tagger(es, 'head', "<style> body, html {  height: 100%;  margin: 0;}.bg {  background-image: url('cathedral.png');  height: 100%;  background-position: center;  background-repeat: no-repeat;  background-size: cover;} </style> <link rel='stylesheet' type='text/css' href='reg.css'>")
 
 if spooder == 'o1':
     spood = tagger(html,'body','Commence the battle! <br>')
@@ -49,5 +50,4 @@ else:
     inter0 = tagger(html,'body','You walk into the cathedral. It seems to have been abandoned. There are cobwebs strewn about in the corner, and there is a red door at the other end of the hallway. It is calling to you. What do you do?')
     inter1 = tagger(inter0,'body',form)
     print(inter1)
-
 

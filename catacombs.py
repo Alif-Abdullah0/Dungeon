@@ -81,7 +81,9 @@ def tagger(html, tag, content):
     lonk = x.find(tag)
     ret = x[:lonk] + content + x[lonk:]
     return(ret)
-html = tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='reg.css'>")
+
+es = tagger(s,'body','<div class="bg"> </div>')
+html = tagger(es, 'head', "<style> body, html {  height: 100%;  margin: 0;}.bg {  background-image: url('fork.png');  height: 100%;  background-position: center;  background-repeat: no-repeat;  background-size: cover;} </style>  <link rel='stylesheet' type='text/css' href='reg.css'>")
 
 cort = tagger(html,'body',"As you walk through the catacombs, you start feel claustrophobic. The stone walls narrow in very sharply, providing almost no room to move forward with. You see several effigies on the walls. Strangely enough, they all resemble people familiar to you. As you tread forward, you see that the path head forks off. What do you do?")
 
@@ -105,6 +107,6 @@ if 'dir0' in data and 'dir1' in data and 'dir2' in data:
         inventory_wipe()
         stat_reset()
         wander = tagger(html,'body','As you wander through the hallways of the catacombs, you realize you are lost. You cannot remember the way you came from, and the path ahead of you keeps going. Your journey has come to an end.')
-        print(tagger(wander,'body','<a href="entry.py"> Start over </a>'))
+        print(tagger(wander,'body','<br> <a href="entry.py"> Start over </a>'))
 else:
-    print(tagger(html,'body',form))
+    print(tagger(html,'body',(form)))

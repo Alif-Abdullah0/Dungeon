@@ -6,6 +6,10 @@ s = s.strip()
 f.close()
 
 print('Content-type: text/html\n')
+
+import cgitb
+cgitb.enable()
+
 def tagger(html, tag, content):
     tag = '</' + tag
     x = html
@@ -59,6 +63,9 @@ def stat_reset():
 
 stat_reset()
 inventory_wipe()
+ez = open('../www/king.txt','w')
+ez.write('HP 40')
+ez.close()
 
 new = (tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='door.css'>"))
-print(tagger(new,'body',"<div class='bg'> </div> <a href='room1.py'> Enter if you dare </a> <a href='fix.py'> Just in case anything breaks </a> <div class='invis'> <a href='equip.py?equip=Key&web=room1.py'> I'm invisible! </a>"))
+print(tagger(new,'body',"<p><a href='room1.py'> Enter if you dare </a> <br> <div class='invis'> <a href='equip.py?equip=Key&web=room1.py'> Key for your thoughts? </a> </div> </p>"))

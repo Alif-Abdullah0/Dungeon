@@ -20,7 +20,7 @@ def tagger(html, tag, content):
     lonk = x.find(tag)
     ret = x[:lonk] + content + x[lonk:]
     return(ret)
-html = (tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='door.css'>"))
+html = (tagger(s, 'head', '<style> body { text-align:center; color:red; height: 100%;  margin: 0;  background-image: url("fountain.png");  background-position: center;  background-repeat: no-repeat;  background-size: cover;  background-attachment:fixed;} </style> '))
 
 es = open("../www/names.txt")
 lis = es.read()

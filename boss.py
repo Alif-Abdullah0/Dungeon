@@ -74,14 +74,17 @@ def tagger(html, tag, content):
 
 end = data.getvalue('name')
 
-html = tagger(s, 'head', "<link rel='stylesheet' type='text/css' href='reg.css'>")
-new = tagger(html,'body','You see a man sitting in a golden throne. He wears a wooden crown. The wall behind him has been split into two pieces. ')
+es = tagger(s,'body','<div class="bg"> </div>')
+
+html = tagger(es, 'head', "<style> body, html {  height: 100%;  margin: 0;}.bg {  background-image: url('throne.png');  height: 100%;  background-position: center;  background-repeat: no-repeat;  background-size: cover;} </style> <link rel='stylesheet' type='text/css' href='reg.css'>")
+new = tagger(html,'body','You see a man sitting in a golden throne. He wears a golden crown, and is surrounded by opulent, glitterin walls of gold. ')
 if end == 'Comic':
     stat_change('HP','25')
-    nor = tagger(new,'body','"Comic, huh?" You stand there, confused that the king knows your name. "So the legends are true. Huh." He throws his head back and laughs, before locking eyes with you. "LET US SEE YOUR STRENGTH." He waves his hand around, and you feel your wounds disappear. "It would not be fun if the battle was not fair, no?" <br> <a href="bossfight.py?health=40"> Cue the boss music! </a>')
+    nor = tagger(new,'body','"Comic, huh?" You stand there, confused that the king knows your name. "So the legends are true. Huh." He throws his head back and laughs, before locking eyes with you. "LET US SEE YOUR STRENGTH." He waves his hand around, and you feel your wounds disappear. "It would not be fun if the battle was not fair, no?" <br> <a href="bossfight.py?health=40"> Cue the boss music (if we have any)! </a>')
     print(nor)
 elif end == 'wendigo':
     print(tagger(new,'body','"How could you?" You stand there, confused. "How could you kill my brother," the king asks. You think the king reminds you of someone, and then you realize that he bears an uncanny resemblance to the wendigo you had slain. "There will be no mercy for you." As soon as he sees that, you feel a dampness inside of your armor. You look down, and to your horror, blood is falling from your breastplate. You drop, dead, to the ground. <br> <a href="entry.py"> Begin again </a>'))
 else:
-    print(tagger(new,'body','"Is it odd to say that I have been expecting you? You, a blight on my peaceful abode. You, who killed my friends, then ravaged my home and murdered it subjects. I have lost the will to fight. I surrender the throne, KING. May you prosper in your affairs." As you try to get a word in, you notice that the king has pulled out a dagger from his robes. You stand there, shocked, as he raises it to the heavens. A second later,lightning ignites the king on fire, and a cloud of smoke envelops the king, and he is gone. You do not know what to make of the situation, but decide to ascend the throne. You are the king now, after all. <br> <a href="final.py"> Induction ceremony </a>'))
+    print(tagger(new,'body','"Is it odd to say that I have been expecting you? You, a blight on my peaceful abode. You, who killed my friends, then ravaged my home and murdered it subjects. I have lost the will to fight. I surrender the throne, KING. May you prosper in your affairs." As you try to get a word in, you notice that the king has pulled out a dagger from his robes. You stand there, shocked, as he raises it to the heavens. A second later,lightning ignites the king on fire, and a cloud of smoke envelops the king, and he is gone. You do not know what to make of the situation, but decide to ascend the throne. You are the monarch now, after all. <br> <a href="final.py"> Induction ceremony </a>'))
+
 
