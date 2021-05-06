@@ -1,0 +1,4 @@
+HP 20
+GP 0
+Armor 3
+Attack 3
